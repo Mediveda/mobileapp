@@ -1,56 +1,71 @@
-// Import necessary components and libraries
+// App.js
 import React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Screen1 from '../screens/home';
+import Screen2 from '../screens/purchaseorder';
+import Screen3 from '../screens/addstock';
+import Screen4 from '../screens/sale';
+import Screen5 from '../screens/more';
 
-// Create a BottomTab navigator
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-// Screen components
-const Screen1 = () => (
-  <View>
-    <Text>Screen 1</Text>
-  </View>
-);
+const CustomNavBar = ({ navigation, state }) => {
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
 
-const Screen2 = () => (
-  <View>
-    <Text>Screen 2</Text>
-  </View>
-);
+  return (
+    <View style={styles.navBar}>
+      <TouchableOpacity onPress={() => navigateToScreen('Screen1')} style={styles.navItem}>
+        <Text>1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Screen2')} style={styles.navItem}>
+        <Text>2</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Screen3')} style={styles.navItem}>
+        <Text>3</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Screen4')} style={styles.navItem}>
+        <Text>4</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigateToScreen('Screen5')} style={styles.navItem}>
+        <Text>5</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-const Screen3 = () => (
-  <View>
-    <Text>Screen 3</Text>
-  </View>
-);
-
-const Screen4 = () => (
-  <View>
-    <Text>Screen 4</Text>
-  </View>
-);
-
-const Screen5 = () => (
-  <View>
-    <Text>Screen 5</Text>
-  </View>
-);
-
-// Navigation bar component
-const Bottomtab = () => {
+const Appbar = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home">
-        <Tab.Screen name="1" component={Screen1} />
-        <Tab.Screen name="2" component={Screen2} />
-        <Tab.Screen name="Home" component={Screen3} />
-        <Tab.Screen name="4" component={Screen4} />
-        <Tab.Screen name="5" component={Screen5} />
-      </Tab.Navigator>
+      <Stack.Navigator initialRouteName="Screen1" headerMode="none">
+        <Stack.Screen name="Screen1" component={Screen1} />
+        <Stack.Screen name="Screen2" component={Screen2} />
+        <Stack.Screen name="Screen3" component={Screen3} />
+        <Stack.Screen name="Screen4" component={Screen4} />
+        <Stack.Screen name="Screen5" component={Screen5} />
+      </Stack.Navigator>
+      <CustomNavBar />
     </NavigationContainer>
   );
 };
 
-export default Bottomtab;
+const styles = StyleSheet.create({
+  navBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#ffffff',
+    paddingVertical: 10,
+  },
+  navItem: {
+    paddingHorizontal: 20,
+  },
+});
+
+export default Appbar;

@@ -8,7 +8,8 @@ import Login from './src/screens/authentication/login';
 import Home from './src/screens/home';
 import SplashScreen from './src/screens/authentication/splashscreen';
 import otp from './src/screens/authentication/otpscreen';
-import Bottomtab from './src/components/appbar';
+import Appbar from './src/components/appbar';
+
 
 
 
@@ -28,7 +29,6 @@ const App = () => {
   return (
     <AuthProvider>
       <NavigationContainer>
-        <Bottomtab/>
         {isSplashVisible ? (
           <SplashScreen />
         ) : (
@@ -38,7 +38,9 @@ const App = () => {
             <Stack.Screen name="otp" component={otp} />
             <Stack.Screen name="Home" component={Home} />
           </Stack.Navigator>
+          
         )}
+        <Appbar/>
       </NavigationContainer>
     </AuthProvider>
   );
