@@ -12,12 +12,13 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     // Perform authentication logic
-      login();
+      // login();
 
     // If authenticated, navigate to Home
-    if (isAuthenticated) {
+    // if (isAuthenticated) {
       navigation.navigate('otp');
-    }
+     // console.log(isAuthenticated)
+    //}
   };
 
   return (

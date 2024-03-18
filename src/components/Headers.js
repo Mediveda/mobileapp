@@ -1,9 +1,10 @@
 //import liraries
 import React from 'react';
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Pressable,Image,TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Message, Color, maxLength} from '../constants/Constants';
 import {scale} from '../constants/Scale';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // Back Header =================
 
@@ -65,13 +66,14 @@ export const BackHeader = props => {
     </View>
   );
 };
+
 const Backstyles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 50,
     alignItems: 'center',
     paddingHorizontal: 10,
     flexDirection: 'row',
-    backgroundColor: Color.white,
+    backgroundColor: "gray",
   },
   TitleText: {
     flex: 1,
@@ -81,7 +83,67 @@ const Backstyles = StyleSheet.create({
   },
 });
 
-// Search Header =================
+const CustomHeader = ({navigation}) => {
+ 
+  return (
+    <SafeAreaView style={styles.container}>
+
+      <View style ={{marginLeft:10,flexDirection:"row",}}>
+      <TouchableOpacity 
+       onPress={()=>navigation.navigate("More")} // Updated onPress function
+    >
+      <Image
+        source={require('../assets/Image/user.jpeg')} 
+        style={styles.image}
+      />
+    </TouchableOpacity>
+     
+      
+      <Text style={{padding:10,fontFamily:"Raleway-Bold",fontSize:20}}>
+          Medical Store
+      </Text>
+
+       
+       <TouchableOpacity style={{
+        padding:10,
+        marginLeft:120
+    }}
+       //onPress={} // Updated onPress function
+    >
+      <Ionicons name='notifications-outline' size={32}/>
+    </TouchableOpacity>
+
+      </View>
+
+     
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+   
+    height: 80,
+    backgroundColor: 'white',
+    borderBottomWidth: 1, // Add a bottom border
+    borderBottomColor: 'lightgray', // Border color
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 }, // Adjust shadow offset
+    shadowOpacity: 0.25, // Adjust shadow opacity
+    shadowRadius: 3, // Adjust shadow radius
+    elevation: 5, // Android elevation for shadow
+    paddingTop: 10, 
+    
+  },
+  image: {
+    width: 50,
+    height: 50, 
+    borderRadius: 10, 
+  },
+});
+
+export default CustomHeader;
+
 
 export const SearchHeader = props => {
   const {searchText, logoPress, searchPress, item1Icon, item1Press} = props;
@@ -109,11 +171,15 @@ export const SearchHeader = props => {
     </View>
   );
 };
+
+
+
 const Searchstyles = StyleSheet.create({
   container: {
-    height: 45,
+    height: 40,
     alignItems: 'center',
     paddingLeft: 20,
+    backgroundColor:"gray",
     paddingRight: 13,
     justifyContent: 'space-between',
     flexDirection: 'row',

@@ -1,10 +1,28 @@
-import { View, Text } from 'react-native';
-import { screensEnabled } from 'react-native-screens';
+// src/Home/index.js
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { PrimaryButton } from '../components/Button';
+import { useAuth } from '../screens/authentication/context';
 
-const Sale = () => (
-    <View>
-      <Text>Sale screen</Text>
+
+const Sale = ({ navigation }) => {
+ 
+
+  return (
+    <View >
+ 
     </View>
   );
-  export default Sale;
-  
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  scrollViewContainer: {
+    paddingVertical: 20, // Adjust as needed
+  },
+});
+
+export default Sale;

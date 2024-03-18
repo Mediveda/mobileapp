@@ -4,9 +4,9 @@ import { SliderBox } from "react-native-image-slider-box";
 
 const App = ({navigation}) => {
     const [images, setImages] = useState([
-      require('../../assets/Image/1.png'),
-      require('../../assets/Image/2.png'),
-      require('../../assets/Image/3.png'),
+      require('../../assets/Image/i1.png'),
+      require('../../assets/Image/i2.png'),
+      require('../../assets/Image/i3.png'),
     ]);
   
       const termsAndConditionsURL = 'https://www.medivedas.com/blank-3';
